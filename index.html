@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sıcaklık Dönüştürücü</title>
+    <style>
+        *{
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        .container {
+         background-image: linear-gradient(to right,rgb(14, 20, 31), #1e272e ,rgb(45, 85, 92),rgb(69, 119, 126),rgb(125, 201, 224));
+         width: 100%;
+         height: 100vh;
+         text-align: center;
+         display: flex;
+        }
+       h2{
+         color: white;
+         margin-bottom: 50px;
+         margin-left: 80px;
+       }
+        label{
+          margin-right: 20px;
+          font-size: 19px;
+          font-style: oblique;
+          font-weight: bold;
+          color: white;
+        }
+        
+        input{
+          width: 25%;
+          min-width: 300px;
+          height: 6vh;
+          margin: 10px 0px;
+          border:2px solid rgb(108, 153, 147);
+          background-color: rgb(108, 153, 147);
+          border-radius: 40px;
+          padding:5px;
+          color: white;
+          text-align: center;
+          font-size: 24px;
+          outline-style: none;
+        }
+        .temp{
+          position: absolute;
+          left: 50%;
+          top: 50%;transform: translate(-50%,-50%);   
+        }
+        #Kelvin{
+          margin-left: 30px;
+        }
+        #Celsius{
+          margin-left: 28px;
+        }
+
+    </style>
+</head>
+<body>
+    
+
+<div class="container">
+
+<div class="temp">
+<h2>Sıcaklık Dönüştürücü</h2>
+  <div>
+      <br>
+    <label>Fahrenheit</label>
+    <input id="Fahrenheit"  type="number"  oninput="cevir(this.id,this.value)" onchange="cevir(this.id,this.value)">
+  </div>
+  <div>
+    <label>Celsius</label>
+    <input id="Celsius"  type="number"   oninput="cevir(this.id,this.value)" onchange="cevir(this.id,this.value)">
+  </div>
+  <div>
+    <label>Kelvin</label>
+    <input id="Kelvin" type="number"  oninput="cevir(this.id,this.value)" onchange="cevir(this.id,this.value)">
+  </div>
+</div>
+</div>
+
+
+<script>
+function cevir(deger,val) {
+  val = parseFloat(val);
+  var Fah = document.getElementById("Fahrenheit");
+  var Cel = document.getElementById("Celsius");
+  var Kel= document.getElementById("Kelvin");
+  if (deger=="Fahrenheit") {
+    Cel.value=((val-32)/1.8).toFixed(2);
+    Kel.value=(((val-32)/1.8)+273.15).toFixed(2);
+  }
+  if (deger=="Celsius") {
+    Fah.value=((val*1.8)+32).toFixed(2);
+    Kel.value=((val)+273.15).toFixed(2);
+  }
+  if (deger=="Kelvin") {
+    Fah.value=(((val-273.15)*1.8)+32).toFixed(2);
+    Cel.value=((val)-273.15).toFixed(2);
+  }
+}
+</script>
+</body>
+</html>
